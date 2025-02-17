@@ -44,8 +44,9 @@ public class BankAccount {
     }
 
     if (value > this.balance) {
-      // Não deveria ser assim, não pode ter print a classe
-      throw new InsufficientFundsException("Saldo insuficiente" + 
+      /** "throw é usado dentro do método para lançar uma exceção específica" */
+      /** Interrompe a execução normal e precisa ser tratado ou prorrogado */
+      throw new InsufficientFundsException("Saldo insuficiente. " + 
       "O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
     }
 

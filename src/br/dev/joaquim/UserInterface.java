@@ -75,7 +75,7 @@ public class UserInterface {
             account.withdraw(value); // pode dar problema
             System.out.println("Saque realizado com sucesso");
         } catch (Exception e) {
-            System.out.println("Problema no saque: " + e.getMessage());
+            System.out.println("Problema no saque: " + e.getMessage()); /** "catch" para tratar um possível erro, quando o saldo é insuficiente */
         }
     }
 

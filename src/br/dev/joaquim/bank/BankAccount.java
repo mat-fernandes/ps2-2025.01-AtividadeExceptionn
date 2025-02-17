@@ -1,5 +1,7 @@
 package br.dev.joaquim.bank;
 
+import br.dev.joaquim.exception.InsufficientFundsException;
+
 public class BankAccount {
   private int accountNumber;
   private double balance;
@@ -35,7 +37,7 @@ public class BankAccount {
     this.balance += value;
   }
 
-  public void withdraw(double value) {
+  public void withdraw(double value) throws InsufficientFundsException {
 
     if (value < 0) {
       throw new IllegalArgumentException("O valor precisa ser positivo, foi informado o valor R$ " + value);
@@ -43,7 +45,8 @@ public class BankAccount {
 
     if (value > this.balance) {
       // Não deveria ser assim, não pode ter print a classe
-      System.out.println("O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
+      throw new InsufficientFundsException("Saldo insuficiente" + 
+      "O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
     }
 
     this.balance -= value;

@@ -9,7 +9,7 @@ public class BankAccount {
 
   public BankAccount() {
   }
-
+  /** A classe encapsula os dados da conta bancária (accountNumber, balance, accountHolderName), fornecendo métodos públicos para acessar e modificar o saldo. */
   public BankAccount(int accountNumber, double balance, String accountHolderName) {
     this.accountNumber = accountNumber;
     this.balance = balance;
@@ -29,7 +29,8 @@ public class BankAccount {
   }
 
   public void deposit(double value) {
-
+/** Impede depósitos negativos, lançando uma IllegalArgumentException. */
+/** Adiciona o valor ao saldo da conta. */
     if (value < 0) {
       throw new IllegalArgumentException("O valor precisa ser positivo, foi informado o valor R$ " + value);
     }
@@ -38,7 +39,7 @@ public class BankAccount {
   }
 
   public void withdraw(double value) throws InsufficientFundsException {
-
+/** Impede saques negativos, lançando uma IllegalArgumentException. */
     if (value < 0) {
       throw new IllegalArgumentException("O valor precisa ser positivo, foi informado o valor R$ " + value);
     }
@@ -46,7 +47,7 @@ public class BankAccount {
     if (value > this.balance) {
       /** "throw é usado dentro do método para lançar uma exceção específica" */
       /** Interrompe a execução normal e precisa ser tratado ou prorrogado */
-      throw new InsufficientFundsException("Saldo insuficiente. " + 
+      throw new InsufficientFundsException("Saldo insuficiente. " + /** Impede saques maiores que o saldo, lançando uma InsufficientFundsException. */
       "O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
     }
 
@@ -56,5 +57,5 @@ public class BankAccount {
   @Override
   public String toString() {
     return "Conta " + accountNumber + " de " + accountHolderName + " têm R$ " + balance + " de saldo";
-  }
+  } /** exibe as informações */
 }
